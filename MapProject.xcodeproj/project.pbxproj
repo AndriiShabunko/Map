@@ -15,6 +15,7 @@
 		BF986A101D475752004FA1DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF986A0E1D475752004FA1DB /* LaunchScreen.storyboard */; };
 		BF986A1B1D475752004FA1DB /* MapProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF986A1A1D475752004FA1DB /* MapProjectTests.m */; };
 		BF986A261D475752004FA1DB /* MapProjectUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF986A251D475752004FA1DB /* MapProjectUITests.m */; };
+		BF986A341D4757EC004FA1DB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF986A331D4757EC004FA1DB /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		BF986A211D475752004FA1DB /* MapProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MapProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF986A251D475752004FA1DB /* MapProjectUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapProjectUITests.m; sourceTree = "<group>"; };
 		BF986A271D475752004FA1DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF986A331D4757EC004FA1DB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF986A341D4757EC004FA1DB /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +84,7 @@
 		BF9869F41D475752004FA1DB = {
 			isa = PBXGroup;
 			children = (
+				BF986A331D4757EC004FA1DB /* MapKit.framework */,
 				BF9869FF1D475752004FA1DB /* MapProject */,
 				BF986A191D475752004FA1DB /* MapProjectTests */,
 				BF986A241D475752004FA1DB /* MapProjectUITests */,
@@ -498,6 +502,7 @@
 				BF986A2C1D475752004FA1DB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BF986A2D1D475752004FA1DB /* Build configuration list for PBXNativeTarget "MapProjectTests" */ = {
 			isa = XCConfigurationList;
@@ -506,6 +511,7 @@
 				BF986A2F1D475752004FA1DB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BF986A301D475752004FA1DB /* Build configuration list for PBXNativeTarget "MapProjectUITests" */ = {
 			isa = XCConfigurationList;
@@ -514,6 +520,7 @@
 				BF986A321D475752004FA1DB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

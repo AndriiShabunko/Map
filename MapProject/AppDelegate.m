@@ -1,10 +1,7 @@
-//
 //  AppDelegate.m
 //  MapProject
-//
 //  Created by Andrew Shabunko on 7/26/16.
 //  Copyright © 2016 Andrew. All rights reserved.
-//
 
 #import "AppDelegate.h"
 
@@ -13,7 +10,6 @@
 @end
 
 @implementation AppDelegate
-
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
