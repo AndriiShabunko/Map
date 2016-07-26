@@ -17,11 +17,11 @@
     [super viewDidLoad];
     
     UIBarButtonItem* addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(actionAdd:)];
-
+    
     UIBarButtonItem* showAllButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(actionShowAll:)];
-
+    
     self.navigationItem.rightBarButtonItems = @[showAllButton, addButton];
-   
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,6 +42,18 @@
 
 
 - (void) actionShowAll:(UIBarButtonItem*) sender {
+    MKMapRect zoomRect = MKMapRectNull;
+
+    for (id <MKAnnotation> annotation in self.mapView.annotations){
+        CLLocationCoordinate2D location = annotation.coordinate;
+        MKMapPoint center = MKMapPointForCoordinate(location);
+        static double delta = 20000;
+        
+        MKMapRect rect = MKMapRectMake(center.x - delta, center.y - delta, delta*2, delta*2);
+        zoomRect = MKMapRectUnion(zoomRect, rect);
+    }
+    zoomRect = [self.mapView mapRectThatFits:zoomRect];
+    [self.mapView setVisibleMapRect:zoomRect edgePadding:UIEdgeInsetsMake(50, 50, 50, 50) animated:YES];
     
 }
 
