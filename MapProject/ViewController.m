@@ -15,8 +15,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     UIBarButtonItem* addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(actionAdd:)];
-    self.navigationItem.rightBarButtonItem = addButton;
+
+    UIBarButtonItem* showAllButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(actionShowAll:)];
+
+    self.navigationItem.rightBarButtonItems = @[showAllButton, addButton];
+   
 }
 
 - (void)didReceiveMemoryWarning {
@@ -33,6 +38,11 @@
     annotation.coordinate = self.mapView.region.center;
     
     [self.mapView addAnnotation:annotation];
+}
+
+
+- (void) actionShowAll:(UIBarButtonItem*) sender {
+    
 }
 
 #pragma mark - MKMapViewDelegate
@@ -66,6 +76,31 @@
 }
 */
 
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
+    if ([annotation isKindOfClass: [MKUserLocation class]]) {
+        return nil;
+    }
+    static NSString* identifier = @"Annotation";
+    
+    MKPinAnnotationView* pin = (MKPinAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
+    
+    if (!pin) {
+        pin = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
+        pin.pinColor = MKPinAnnotationColorGreen;
+        pin.animatesDrop = YES;
+        pin.canShowCallout = YES;
+        pin.draggable = YES;
+    }
+        else {
+            pin.annotation=annotation;
+        }
+        return pin;
+    }
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view didChangeDragState:(MKAnnotationViewDragState)newState
+   fromOldState:(MKAnnotationViewDragState)oldState {
+    
+}
 
 
 @end
