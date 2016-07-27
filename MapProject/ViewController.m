@@ -18,9 +18,10 @@
     
     UIBarButtonItem* addPin = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(actionAddPin:)];
     UIBarButtonItem* showAllPins = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(actionShowAllPins:)];
+    UIBarButtonItem* flexible = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     
-    self.navigationItem.rightBarButtonItem = showAllPins;
-    self.navigationItem.leftBarButtonItem = addPin;
+    self.navigationItem.rightBarButtonItems = @[flexible,showAllPins,flexible];
+    self.navigationItem.leftBarButtonItems = @[flexible,addPin,flexible];
   }
 
 - (void)didReceiveMemoryWarning {
@@ -52,7 +53,6 @@
     }
     zoomRect = [self.mapView mapRectThatFits:zoomRect];
     [self.mapView setVisibleMapRect:zoomRect edgePadding:UIEdgeInsetsMake(50, 50, 50, 50) animated:YES];
-    
 }
 
 #pragma mark - MKMapViewDelegate
