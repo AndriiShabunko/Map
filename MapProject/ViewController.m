@@ -108,6 +108,11 @@
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view didChangeDragState:(MKAnnotationViewDragState)newState
    fromOldState:(MKAnnotationViewDragState)oldState {
+    if (newState == MKAnnotationViewDragStateEnding) {
+        CLLocationCoordinate2D location = view.annotation.coordinate;
+        MKMapPoint point = MKMapPointForCoordinate(location);
+        NSLog(@"\nlocation = {%f, %f}\npoint = %@", location.latitude, location.longitude, MKStringFromMapPoint(point));
+    }
     
 }
 
