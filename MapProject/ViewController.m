@@ -39,11 +39,10 @@
     [self.mapView addAnnotation:annotation];
 }
 
-
 - (void) actionShowAllPins:(UIBarButtonItem*) sender {
     MKMapRect zoomRect = MKMapRectNull;
 
-    for (id <MKAnnotation> annotation in self.mapView.annotations){
+    for (id <MKAnnotation> annotation in self.mapView.annotations) {
         CLLocationCoordinate2D location = annotation.coordinate;
         MKMapPoint center = MKMapPointForCoordinate(location);
         static double delta = 20000;
@@ -57,7 +56,7 @@
 }
 
 #pragma mark - MKMapViewDelegate
-/*
+
 - (void)mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated {
     NSLog(@"regionWillChangeAnimated");
 }
@@ -85,7 +84,6 @@
 - (void)mapViewDidFinishRenderingMap:(MKMapView *)mapView fullyRendered:(BOOL)fullyRendered {
     NSLog(@"mapViewDidFinishRenderingMap fullyRendered = %d", fullyRendered);
 }
-*/
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
     if ([annotation isKindOfClass: [MKUserLocation class]]) {
