@@ -16,13 +16,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    UIBarButtonItem* addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(actionAdd:)];
+    UIBarButtonItem* addPin = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(actionAddPin:)];
+    UIBarButtonItem* showAllPins = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(actionShowAllPins:)];
     
-    UIBarButtonItem* showAllButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(actionShowAll:)];
-    
-    self.navigationItem.rightBarButtonItems = @[showAllButton, addButton];
-
-}
+    self.navigationItem.rightBarButtonItem = showAllPins;
+    self.navigationItem.leftBarButtonItem = addPin;
+  }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -31,7 +30,7 @@
 
 #pragma mark - Action
 
-- (void) actionAdd:(UIBarButtonItem*) sender {
+- (void) actionAddPin:(UIBarButtonItem*) sender {
     MapAnnotation* annotation = [[MapAnnotation alloc] init];
     annotation.title = @"Test Title";
     annotation.subtitle = @"Test SubTitle";
@@ -41,7 +40,7 @@
 }
 
 
-- (void) actionShowAll:(UIBarButtonItem*) sender {
+- (void) actionShowAllPins:(UIBarButtonItem*) sender {
     MKMapRect zoomRect = MKMapRectNull;
 
     for (id <MKAnnotation> annotation in self.mapView.annotations){
