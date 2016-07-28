@@ -99,6 +99,10 @@
         pin.animatesDrop = YES;
         pin.canShowCallout = YES;
         pin.draggable = YES;
+        
+        UIButton* descriptionButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+        [descriptionButton addTarget:self action:@selector(actionDescription:) forControlEvents:UIControlEventTouchUpInside];
+        pin.rightCalloutAccessoryView = descriptionButton;
     }
         else {
             pin.annotation=annotation;
@@ -116,4 +120,9 @@
     
 }
 
+#pragma mark - Action
+
+- (void) actionDescription:(UIButton*) sender {
+    NSLog(@"actionDescription");
+}
 @end
