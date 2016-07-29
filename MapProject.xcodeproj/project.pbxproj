@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF5F5A2E1D4A08790048E3B4 /* UIView+MKAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF5F5A2D1D4A08790048E3B4 /* UIView+MKAnnotationView.m */; };
 		BF986A021D475752004FA1DB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BF986A011D475752004FA1DB /* main.m */; };
 		BF986A051D475752004FA1DB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BF986A041D475752004FA1DB /* AppDelegate.m */; };
 		BF986A081D475752004FA1DB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF986A071D475752004FA1DB /* ViewController.m */; };
@@ -37,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BF5F5A2C1D4A08790048E3B4 /* UIView+MKAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MKAnnotationView.h"; sourceTree = "<group>"; };
+		BF5F5A2D1D4A08790048E3B4 /* UIView+MKAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MKAnnotationView.m"; sourceTree = "<group>"; };
 		BF9869FD1D475752004FA1DB /* MapProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF986A011D475752004FA1DB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BF986A031D475752004FA1DB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -119,6 +122,8 @@
 				BF986A001D475752004FA1DB /* Supporting Files */,
 				BFF613931D47887900777940 /* MapAnnotation.h */,
 				BFF613941D47887900777940 /* MapAnnotation.m */,
+				BF5F5A2C1D4A08790048E3B4 /* UIView+MKAnnotationView.h */,
+				BF5F5A2D1D4A08790048E3B4 /* UIView+MKAnnotationView.m */,
 			);
 			path = MapProject;
 			sourceTree = "<group>";
@@ -216,6 +221,11 @@
 				TargetAttributes = {
 					BF9869FC1D475752004FA1DB = {
 						CreatedOnToolsVersion = 7.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					BF986A151D475752004FA1DB = {
 						CreatedOnToolsVersion = 7.1;
@@ -281,6 +291,7 @@
 			files = (
 				BF986A081D475752004FA1DB /* ViewController.m in Sources */,
 				BF986A051D475752004FA1DB /* AppDelegate.m in Sources */,
+				BF5F5A2E1D4A08790048E3B4 /* UIView+MKAnnotationView.m in Sources */,
 				BF986A021D475752004FA1DB /* main.m in Sources */,
 				BFF613951D47887900777940 /* MapAnnotation.m in Sources */,
 			);
