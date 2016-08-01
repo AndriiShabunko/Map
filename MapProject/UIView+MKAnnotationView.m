@@ -1,10 +1,7 @@
-//
 //  UIView+MKAnnotationView.m
 //  MapProject
-//
 //  Created by Andrew Shabunko on 7/28/16.
 //  Copyright © 2016 Andrew. All rights reserved.
-//
 
 #import "UIView+MKAnnotationView.h"
 #import <MapKit/MKAnnotationView.h>

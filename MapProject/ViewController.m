@@ -12,6 +12,8 @@
 
 @property (strong, nonatomic) CLGeocoder* geoCoder;
 @property (strong, nonatomic) MKDirections* directions;
+@property (strong, nonatomic) UIGestureRecognizer* longPress;
+@property (strong, nonatomic) CLLocationManager* locationManager;
 
 @end
 
@@ -28,8 +30,11 @@
     
     self.navigationItem.rightBarButtonItems = @[flexible,showAllPins,flexible];
     self.navigationItem.leftBarButtonItems = @[flexible,addPin,flexible];
-    
     self.geoCoder = [[CLGeocoder alloc]init];
+    
+    
+    self.longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(respondToLongPress:)];
+    [self.mapView addGestureRecognizer:self.longPress];
   }
 
 - (void)didReceiveMemoryWarning {
@@ -75,6 +80,58 @@
 //
 //}
 
+- (void) askForUserLocationUsage {
+    
+    //asking for a permission to work with user location
+    self.locationManager = [[CLLocationManager alloc]init];
+    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined) {
+        
+        NSLog(@"\n\nAccess to location services not determined asking for permission\n\n");
+        if([[NSBundle mainBundle] objectForInfoDictionaryKey:@"NSLocationWhenInUseUsageDescription"] && [self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+            [self.locationManager requestWhenInUseAuthorization];
+        }
+        
+    } else if([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied) {
+        
+        NSLog(@"\n\nAccess to location services denied\n\n");
+        
+    } else if([CLLocationManager authorizationStatus] == kCLAuthorizationStatusRestricted) {
+        
+        NSLog(@"\n\nAccess to location services restricted\n\n");
+    }
+    
+    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways) {
+        
+        NSLog(@"\n\nAccess to location services always allowed\n\n");
+    } else if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse) {
+        
+        NSLog(@"\n\nAccess to location services when in use allowed\n\n");
+    }
+    
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer*)gestureRecognizer shouldReceiveTouch:(UITouch*)touch {
+    CGPoint touchLocation = [touch locationInView:self.mapView];
+    UIView *view = [self.mapView hitTest:touchLocation withEvent:nil];
+    if ([view isKindOfClass:[MKPinAnnotationView class]] && gestureRecognizer == self.longPress) {
+        return NO;
+    }
+    return YES;
+}
+
+- (IBAction)respondToLongPress:(UILongPressGestureRecognizer *)recognizer {
+    if (recognizer.state == UIGestureRecognizerStateBegan) {
+        
+        
+        MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
+        annotation.title = @"Test";
+        annotation.subtitle = @"SubTest";
+        CGPoint touchLocation = [recognizer locationInView:self.mapView];
+        CLLocationCoordinate2D coordinate = [self.mapView convertPoint:touchLocation  toCoordinateFromView:self.mapView];
+        annotation.coordinate = coordinate;
+        [self.mapView addAnnotation:annotation];
+    }
+}
 
 - (void) actionShowAllPins:(UIBarButtonItem*) sender {
     MKMapRect zoomRect = MKMapRectNull;
@@ -266,7 +323,5 @@
     ];
 }
 }
-
-
 
 @end
